@@ -1,15 +1,47 @@
 <html>
   <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     <title>The Gossip Project</title>
   </head>
+
   <body>
-    <h1>Mon super site de gossip, depuis le dossier views !</h1>
-    <a href="/gossips/new/">Cliquez ici pour ajouter un gossip</a>
-    <% gossips.each_with_index do |gossip, index| %>
-      <p>
-        <%= gossip.author %><br/>
-        <a href="./gossips/<%= index %>/"><%= gossip.content %></a>
-      </p>
-    <% end %>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">The Gossip Project</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Accueil<span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    
+    <div class="container p-3">
+      <h1 class="text-center">Mon super site de gossip ! </h1>
+      <a class="btn btn-danger btn-sm m-3" href="/gossips/new/">Cliquez ici pour ajouter un gossip</a>
+      
+      <div class="col-12 text-center">
+        <% gossips.each_with_index do |gossip, index| %>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="mt-0 text-center"><%= gossip.author %></h5>
+              <p class="card-text text-center"><%= gossip.content %></p>
+              <a class="btn btn-outline-secondary btn-sm stretched-link" href="./gossips/<%= index %>/">Afficher ce gossip</a>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </body>
 </html>
